@@ -92,7 +92,7 @@ For detailed information use 'help <command>'.
         sender = fds.read()
         fds.close()
         balance = self.check_balance(sender)
-        balance = 1000 # for developing. del this!!!
+        # balance = 1000 # for developing. del this!!!
         if int(l[1]) <= balance:
             if (len(l[1]) != 4):
                 print("amount should consist of 4 characters")

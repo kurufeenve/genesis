@@ -6,8 +6,6 @@ class Serializer():
 
     def serialize(self, tx):
         stx = tx.amount + '0' * (35 - len(tx.sender)) + tx.sender + '0' * (35 - len(tx.recipient)) + tx.recipient + tx.pubkey + tx.signature.upper()
-        print(len(tx.amount))
-        print(len(stx[202:]))
         return stx
 
 class Deserializer():
