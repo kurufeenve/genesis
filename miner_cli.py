@@ -84,6 +84,18 @@ Longest chain is validated and written to the local file if it is longer than lo
 
         self.check_confl()
 
+    def do_blockchain_height(self, arg):
+
+        "returns the height of the blockchain on the current node"
+
+        try:
+            fd = open('storage/blockchain', 'r', encoding='utf-8')
+            blocks = json.loads(fd.read())
+            fd.close()
+        except:
+            print("blockchain is abscent")
+            return
+
 
     def genesis(self):
 
