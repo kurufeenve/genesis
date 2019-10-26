@@ -67,8 +67,11 @@ For detailed information use 'help <command>'.
                 address = wallet.pubKeyToAddress(wallet.privateKeyToPublicKey(__hex[2:-8]))
                 print(address)
                 fd = open('./address', 'w')
-                #print("address = ", address)
                 fd.write(address)
+                fd.close()
+                fd = open('./privatekey', 'w')
+                fd.write(__data)
+                fd.close()
             else:
                 print('Wrong prefix')
         except:
@@ -91,6 +94,9 @@ For detailed information use 'help <command>'.
         balance = self.check_balance(sender)
         balance = 1000 # for developing. del this!!!
         if int(l[1]) <= balance:
+            if (len(l[1]) != 4):
+                print("amount should consist of 4 characters")
+                return 0
             tx = Transaction(sender, l[0], l[1])
             txHash = tx.txHashCalc()
             __fdpk = open('privatekey', 'r')
@@ -161,5 +167,5 @@ if __name__ == '__main__':
     cli = Wallet_cli()
     cli.cmdloop()
 
-    #  send 1to4yvjbUSJvUYKJ6JertB7nUBJvJEQXG, 1
+    #  send 1CskVPrVrqYLm2WwQVqX6ozMviMbGdriE, 1
     #  check_balance 1to4yvjbUSJvUYKJ6JertB7nUBJvJEQXG
